@@ -16,4 +16,10 @@ mongoose.connect(uri, { useNewUrlParser: true })
 const conn = mongoose.connection
 conn.once('open', () => console.log(`MongoDB connected at ${conn.name}`))
 
+const exercisesRouter = require('./routes/exercises')
+const usersRouter = require('./routes/users')
+
+app.use('/exercises', exercisesRouter)
+app.use('/users', usersRouter)
+
 app.listen(port, () => console.log(`Server running in por ${port}`))
